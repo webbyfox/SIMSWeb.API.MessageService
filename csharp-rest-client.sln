@@ -16,8 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{25EE7F
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIMSAPI", "SIMSAPI\SIMSAPI.csproj", "{F36B3B81-E759-4D99-B288-2D6965F64C44}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SIMSWeb.API.MessageService", "SIMSWeb.API.MessageService\SIMSWeb.API.MessageService.csproj", "{7145C92A-5564-4B49-8DF9-D1FF00040B31}"
 EndProject
 Global
@@ -38,10 +36,6 @@ Global
 		{4ED5A074-191B-4C07-BB5B-E3060E6F7720}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ED5A074-191B-4C07-BB5B-E3060E6F7720}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ED5A074-191B-4C07-BB5B-E3060E6F7720}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F36B3B81-E759-4D99-B288-2D6965F64C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F36B3B81-E759-4D99-B288-2D6965F64C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F36B3B81-E759-4D99-B288-2D6965F64C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F36B3B81-E759-4D99-B288-2D6965F64C44}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7145C92A-5564-4B49-8DF9-D1FF00040B31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7145C92A-5564-4B49-8DF9-D1FF00040B31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7145C92A-5564-4B49-8DF9-D1FF00040B31}.Release|Any CPU.ActiveCfg = Release|Any CPU

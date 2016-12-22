@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 
 using System.Web.Http;
+using System.Web.UI;
 using SIMSWeb.API.MessageService.Models;
 
 using MessageBird;
@@ -17,7 +18,7 @@ namespace SIMSWeb.API.MessageService.Controllers
     public class MessageController : ApiController
     {
     
-        const string MBAccessKey = Constants.MbAccessKey;
+        const string MbAccessKey = Constants.MbAccessKey;
 
         [HttpGet]
         [Route("")]
@@ -25,8 +26,8 @@ namespace SIMSWeb.API.MessageService.Controllers
         {
             return new[]
             {
-                "Hello, World!",
-                "This is SIMS Message Service Project."
+                "SIMS API",
+                "This is SIMS Message Service API."
             };
         }
 
@@ -36,10 +37,8 @@ namespace SIMSWeb.API.MessageService.Controllers
         public bool TestingOnly()
         {
             var recipients = new Recipients();
-
             recipients.AddRecipient(447412218887);
-
-            var Message = new Message("RCS", "Hello from Riz", recipients);
+            var Message = new Message("RCS", "Hello from Rizwan", recipients);
 
             var responseMessage = SendMessage(Message);
 
@@ -48,29 +47,21 @@ namespace SIMSWeb.API.MessageService.Controllers
 
         [HttpPost]
         [Route("api/Message/SendMessage/")]
-        public static bool SendMessage(Message ClientMessage)
+        public static bool SendMessage([FromBody] Message message)
         {
-            //api/Message/SendMessage/var Body = ClientMessage.Body;
-            var Body = "Hello from Riz";
-            const long msisdn = 447412218887;
-
-                 
-
-            var recipients = ClientMessage.Recipients.Items;
-            //recipients.AddRecipient(31612345678);
-            //recipients.AddRecipient(List<Recipient> message.Recipients.Items);
-
+            
             IProxyConfigurationInjector proxyConfigurationInjector = null; // for no web proxies, or web proxies not requiring authentication
             //proxyConfigurationInjector = new InjectDefaultCredentialsForProxiedUris(); // for NTLM based web proxies
             //proxyConfigurationInjector = new InjectCredentialsForProxiedUris(new NetworkCredential("username", "password")); // for username/password based web proxies
 
-            Client client = Client.CreateDefault(MBAccessKey, proxyConfigurationInjector);
+            var client = Client.CreateDefault(MbAccessKey, proxyConfigurationInjector);
 
             try
             {
-            //Recipients PhoneNumbers = message.Recipients; 
-                MessageBird.Objects.Message message = client.SendMessage(Constants.Originator, Body, new [] { msisdn} );
-                return true;
+                   var  msisdn = message.Recipients.Items.FirstOrDefault();
+                    var result = client.SendMessage(message.Originator, message.Body, new[] { msisdn.Msisdn });
+                   return true;
+                
             }
             catch (ErrorException e)
             {
